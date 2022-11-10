@@ -1,40 +1,50 @@
 class toDo {
-    constructor(whatToDo, timeFrame) {
+    constructor(whatToDo) {
       this.whatToDo = whatToDo;
-      this.timeFrame = timeFrame;
     }
 }
 
   
 let toDoList = [
-  new toDo("Make breakfast", 15),
-  new toDo("Brush Teeth", 2),
-  new toDo("Workout", 60),
-  new toDo("Shower",10),
+  new toDo("Make breakfast"),
+  new toDo("Brush Teeth"),
+  new toDo("Workout"),
+  new toDo("Shower"),
+  new toDo("Golf"),
+  new toDo("Study"),
 ];
 
-let finishedList =[];
+
 for (let i = 0; i < toDoList.length; i++) {
-  let container = document.createElement("div");
-  let whatToDo = document.createElement("ul");
-  let timeFrame = document.createElement("li");
-
+  let whatToDoContainer = document.getElementById("firstList")
+  let whatToDoUl = document.createElement("ul");
+  let whatToDo = document.createElement("li");
   whatToDo.innerHTML = toDoList[i].whatToDo;
-  timeFrame.innerHTML =toDoList[i].timeFrame;
+  whatToDoUl.appendChild(whatToDo);
+  whatToDoContainer.appendChild(whatToDoUl)
+  document.body.appendChild(whatToDoContainer);
+  let finishedContainer = document.getElementById("finished");
 
+  whatToDoUl.addEventListener("click", () => {
+        markAsDone(toDoList[i]);
+      });
+
+function markAsDone () {
+  whatToDoUl.innerHTML="";
+  toDoList.splice();
+  console.log("Du tryckte på", toDoList[i].whatToDo);
+  secondList();
+
+}
+function secondList (){
+  let finishedUl = document.createElement("ul");
+  let finishedToDo = document.createElement("li");
+  finishedToDo.innerHTML= toDoList[i].whatToDo;
+  finishedUl.appendChild(finishedToDo);
+  finishedContainer.appendChild(finishedUl);
+  document.body.appendChild(finishedContainer);
  
-  container.addEventListener("click", () => {
-    markAsDone(toDoList[i]);
-  });
-
-  container.appendChild(whatToDo);
-  container.appendChild(timeFrame);
-
-  document.body.appendChild(container);
-
-  function markAsDone (toDo) {
-    container.innerHTML="";
-    toDoList.splice(1,1);
-   }
 }
 
+
+}
