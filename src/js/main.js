@@ -1,17 +1,18 @@
 class toDo {
-    constructor(whatToDo) {
+    constructor(whatToDo, completed) {
       this.whatToDo = whatToDo;
+      this.completed = completed;
     }
 }
 
   
 let toDoList = [
-  new toDo("Make breakfast"),
-  new toDo("Brush Teeth"),
-  new toDo("Workout"),
-  new toDo("Shower"),
-  new toDo("Golf"),
-  new toDo("Study"),
+  new toDo("Make breakfast",false),
+  new toDo("Brush Teeth",false),
+  new toDo("Workout",false),
+  new toDo("Shower",false),
+  new toDo("Golf",false),
+  new toDo("Study",false),
 ];
 
 
@@ -34,7 +35,8 @@ function markAsDone () {
   toDoList.splice();
   console.log("Du tryckte på", toDoList[i].whatToDo);
   secondList();
-
+toDoList[i].completed=true;
+console.log(toDoList[i].completed);
 }
 function secondList (){
   let finishedUl = document.createElement("ul");
