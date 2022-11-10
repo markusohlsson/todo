@@ -15,6 +15,7 @@ let toDoList = [
   new toDo("Study",false),
 ];
 
+console.log(toDoList);
 
 for (let i = 0; i < toDoList.length; i++) {
   let whatToDoContainer = document.getElementById("firstList")
@@ -33,10 +34,10 @@ for (let i = 0; i < toDoList.length; i++) {
 function markAsDone () {
   whatToDoUl.innerHTML="";
   toDoList.splice();
-  console.log("Du tryckte på", toDoList[i].whatToDo);
   secondList();
 toDoList[i].completed=true;
-console.log(toDoList[i].completed);
+console.log("Is task completed?", toDoList[i].completed);
+console.log(toDoList[i]);
 }
 function secondList (){
   let finishedUl = document.createElement("ul");
@@ -50,3 +51,4 @@ function secondList (){
 
 
 }
+
